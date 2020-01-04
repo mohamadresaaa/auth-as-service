@@ -7,7 +7,7 @@
     "build": "babel src --out-dir dist",
     "dev": "nodemon --exec babel-node src",
     "start": "npm run build && node dist",
-    "test": "jest --passWithNoTests"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
