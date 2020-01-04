@@ -1,11 +1,11 @@
-const express = require("express")
-const { createServer } = require("http")
+import express from "express"
+import { createServer } from "http"
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
 const setupExpress = Symbol("Express installation method")
 
-module.exports = class App {
+export default class App {
   constructor () {
     this[provider] = express()
   }
