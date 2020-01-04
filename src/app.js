@@ -2,6 +2,7 @@ import express from "express"
 import { createServer } from "http"
 import mongoose from "mongoose"
 import helmet from "helmet"
+import bodyParser from "body-parser"
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
@@ -49,5 +50,7 @@ export default class App {
    */
   [configuration] () {
     this[provider].use(helmet())
+    this[provider].use(bodyParser.json())
+    this[provider].use(bodyParser.urlencoded({ extended: true }))
   }
 }
