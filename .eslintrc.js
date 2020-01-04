@@ -16,6 +16,12 @@ module.exports = {
   },
   rules: {
     semi: ["error", "never"],
-    quotes: ["error", "double"]
+    quotes: ["error", "double"],
+    "sort-imports": ["error", {
+      "ignoreCase": false,
+      "ignoreDeclarationSort": false,
+      "ignoreMemberSort": false,
+      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+  }]
   }
 }
