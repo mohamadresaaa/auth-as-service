@@ -5,6 +5,7 @@ import helmet from "helmet"
 import bodyParser from "body-parser"
 import morgan from "morgan"
 import logger from "./utilities/logger"
+import { contentType } from "./utilities/contentType"
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
@@ -53,6 +54,7 @@ export default class App {
     this[provider].use(helmet())
     this[provider].use(bodyParser.json())
     this[provider].use(bodyParser.urlencoded({ extended: true }))
+    this[provider].use(contentType())
     this[provider].use(morgan("dev"))
   }
 }
