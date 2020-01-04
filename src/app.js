@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import helmet from "helmet"
 import bodyParser from "body-parser"
 import morgan from "morgan"
+import logger from "./utilities/logger"
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
@@ -30,7 +31,7 @@ export default class App {
    */
   [setupExpress] () {
     const server = createServer(this[provider])
-    server.listen(3030, console.log("Server running on port 3030"))
+    server.listen(3030, logger("Server running on port 3030"))
   }
 
   /** Setup mongodb and set config
@@ -41,7 +42,7 @@ export default class App {
     mongoose.Promise = global.Promise
     mongoose.connect("", {
       // set options
-    }, err => console.log(err.message))
+    }, err => logger(err.message, "red"))
   }
 
   /** Setup and using packages
