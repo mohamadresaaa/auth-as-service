@@ -15,7 +15,7 @@ export class ErrorMessage extends Error {
   static errNotFound (properties, internalProperties) {
     return new ErrorMessage("Not found", "The specified api does not exist", 404, properties, internalProperties)
   }
-};
+}
 
 export class PublicErrorMessage {
   constructor (err) {
@@ -24,7 +24,7 @@ export class PublicErrorMessage {
     this.status = err.status ? err.status : 500
     this.properties = err.properties
   }
-};
+}
 
 export class PublicInfoMessage {
   constructor (message, status, properties) {
@@ -44,4 +44,4 @@ export class PublicInfoMessage {
   static infoUpdated (resource, properties) {
     return new PublicInfoMessage(`${resource} was updated`, 201, properties)
   }
-};
+}
