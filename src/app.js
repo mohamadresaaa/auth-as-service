@@ -3,6 +3,7 @@ import { createServer } from "http"
 import mongoose from "mongoose"
 import helmet from "helmet"
 import bodyParser from "body-parser"
+import morgan from "morgan"
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
@@ -25,8 +26,7 @@ export default class App {
 
   /** Setup server with express
    * @private
-   * @package http
-   * @package express
+   * @package http, express
    */
   [setupExpress] () {
     const server = createServer(this[provider])
@@ -46,11 +46,12 @@ export default class App {
 
   /** Setup and using packages
    * @private
-   * @package helmet
+   * @package helmet, body-parser, morgan
    */
   [configuration] () {
     this[provider].use(helmet())
     this[provider].use(bodyParser.json())
     this[provider].use(bodyParser.urlencoded({ extended: true }))
+    this[provider].use(morgan("dev"))
   }
 }
