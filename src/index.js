@@ -1,3 +1,3 @@
-const app = require("./app")
+const App = require("./app")
 
-new app().initialize()
+new App().initialize()
