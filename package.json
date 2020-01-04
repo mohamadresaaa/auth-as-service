@@ -25,6 +25,7 @@
   "homepage": "https://github.com/mohamadresaaa/jraw-server#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "helmet": "^3.21.2",
     "mongoose": "^5.8.4"
   },
   "devDependencies": {

@@ -1,11 +1,13 @@
 import express from "express"
 import { createServer } from "http"
 import mongoose from "mongoose"
+import helmet from "helmet"
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
 const setupExpress = Symbol("Express installation")
 const setupMongodb = Symbol("Mongodb installation and configuration")
+const configuration = Symbol("Server packages configuration")
 
 export default class App {
   constructor () {
@@ -39,5 +41,13 @@ export default class App {
     mongoose.connect("", {
       // set options
     }, err => console.log(err.message))
+  }
+
+  /** Setup and using packages
+   * @private
+   * @package helmet
+   */
+  [configuration] () {
+    this[provider].use(helmet())
   }
 }
