@@ -7,6 +7,7 @@ import morgan from "morgan"
 import logger from "./utilities/logger"
 import { contentType } from "./utilities/contentType"
 import { apiError404, apiErrorHandler } from "./middleware/errorHandle"
+import routes from "./routes"
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
@@ -66,6 +67,7 @@ export default class App {
    * @private
    */
   [setupRoutes] () {
+    this[provider].use("/api", routes)
     this[provider].use("*", apiError404)
     this[provider].use(apiErrorHandler)
   }
