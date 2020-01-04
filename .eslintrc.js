@@ -5,15 +5,14 @@ module.exports = {
     node: true
   },
   extends: [
-    'standard'
+    "standard"
   ],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly'
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly"
   },
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module'
+    parser: "babel-eslint"
   },
   rules: {
     semi: ["error", "never"],
