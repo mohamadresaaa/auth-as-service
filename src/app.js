@@ -48,6 +48,7 @@ export default class App {
     mongoose.Promise = global.Promise
     mongoose.connect("", {
       // set options
+      useNewUrlParser: true
     }, err => logger(err.message, "red"))
   }
 
