@@ -1,4 +1,4 @@
-import { PublicErrorMessage, ErrorMessage } from "../lib/messages"
+import { ErrorMessage, PublicErrorMessage } from "../lib/messages"
 import fs from "fs"
 
 export const apiErrorHandler = (error, req, res, next) => {
