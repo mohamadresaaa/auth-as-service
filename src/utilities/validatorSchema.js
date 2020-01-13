@@ -14,3 +14,9 @@ export const login = joi.object().keys({
 export const passwordRecovery = joi.object().keys({
   email: joi.string().email({ minDomainSegments: 2 }).required()
 })
+
+export const resetPassword = joi.object().keys({
+  code: joi.string().required(),
+  password: joi.string().min(8).required(),
+  passwordConfirmation: joi.string().valid(joi.ref("password")).messages({ "any.only": "passwordConfirmation must match password" })
+})
