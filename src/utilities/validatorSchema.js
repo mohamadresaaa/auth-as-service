@@ -10,3 +10,7 @@ export const login = joi.object().keys({
   email: joi.string().required(),
   password: joi.string().required()
 })
+
+export const passwordRecovery = joi.object().keys({
+  email: joi.string().email({ minDomainSegments: 2 }).required()
+})
