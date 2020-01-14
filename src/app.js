@@ -37,7 +37,8 @@ export default class App {
    */
   [setupExpress] () {
     const server = createServer(this[provider])
-    server.listen(3030, logger("Server running on port 3030"))
+    const port = config.server[Symbol.for("port")]
+    server.listen(port, logger(`Server running on port ${port}`))
   }
 
   /** Setup mongodb and set config
@@ -61,7 +62,7 @@ export default class App {
     this[provider].use(bodyParser.json())
     this[provider].use(bodyParser.urlencoded({ extended: true }))
     this[provider].use(contentType)
-    this[provider].use(morgan("dev"))
+    this[provider].use(morgan(config.server.logMode))
   }
 
   /** Import api routes and errors management
