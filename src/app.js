@@ -47,10 +47,9 @@ export default class App {
    */
   [setupMongodb] () {
     mongoose.Promise = global.Promise
-    mongoose.connect("", {
-      // set options
-      useNewUrlParser: true
-    }, err => logger(err.message, "red"))
+    mongoose.connect(config.database.mongodb[Symbol.for("mongodb url")], {
+      ...config.database.mongodb[Symbol.for("mongodb options")]
+    }, err => err ? logger(err.message, "red") : logger("Database connected"))
   }
 
   /** Setup and using packages
