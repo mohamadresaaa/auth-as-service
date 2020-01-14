@@ -28,6 +28,10 @@ const userSchema = new Schema({
     default: null,
     type: String
   },
+  job: {
+    default: null,
+    type: String
+  },
   password: {
     required: true,
     type: String
