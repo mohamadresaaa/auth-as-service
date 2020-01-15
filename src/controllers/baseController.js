@@ -1,12 +1,16 @@
 import autoBind from "auto-bind"
 import models from "../models"
+import services from "../services"
 
 export default class BaseController {
   constructor () {
-    // binding methods for using on child classes
+    // Binding methods for using on child classes
     autoBind(this)
 
-    // set models in symbol key
+    // Set models
     this[Symbol.for("models")] = models
+
+    // Set services
+    this[Symbol.for("services")] = services
   }
 }
