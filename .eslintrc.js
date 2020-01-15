@@ -23,6 +23,6 @@ module.exports = {
       "ignoreDeclarationSort": false,
       "ignoreMemberSort": false,
       "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-  }]
+    }]
   }
 }
