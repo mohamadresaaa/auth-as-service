@@ -12,9 +12,6 @@ module.exports = {
     SharedArrayBuffer: "readonly",
     config: "readonly"
   },
-  parserOptions: {
-    parser: "babel-eslint"
-  },
   rules: {
     semi: ["error", "never"],
     quotes: ["error", "double"],
