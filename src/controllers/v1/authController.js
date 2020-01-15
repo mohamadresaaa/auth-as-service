@@ -22,7 +22,8 @@ export default new class AuthController extends baseController {
 
   async forgotPassword (req, res, next) {
     try {
-      res.send("forgot Password")
+      const result = this[Symbol.for("services")].v1.passwordRecovery()
+      res.send(result)
     } catch (error) {
       next(error)
     }
