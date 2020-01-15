@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose"
+const { Schema, model } = require("mongoose")
 
 const userSchema = new Schema({
   avatar: {
@@ -58,4 +58,4 @@ userSchema.index({ email: 1 })
 userSchema.index({ username: 1 })
 userSchema.index({ createdAt: -1 })
 
-export default model("User", userSchema)
+module.exports = model("User", userSchema)

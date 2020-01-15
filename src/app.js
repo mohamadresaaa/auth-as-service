@@ -1,13 +1,13 @@
-import { apiError404, apiErrorHandler } from "./middleware/errorHandle"
-import bodyParser from "body-parser"
-import { contentType } from "./utilities/contentType"
-import { createServer } from "http"
-import express from "express"
-import helmet from "helmet"
-import logger from "./utilities/logger"
-import mongoose from "mongoose"
-import morgan from "morgan"
-import routes from "./routes"
+const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
+const bodyParser = require("body-parser")
+const contentType = require("./utilities/contentType")
+const { createServer } = require("http")
+const express = require("express")
+const helmet = require("helmet")
+const logger = require("./utilities/logger")
+const mongoose = require("mongoose")
+const morgan = require("morgan")
+const routes = require("./routes")
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
@@ -16,7 +16,7 @@ const setupMongodb = Symbol("Mongodb installation and configuration")
 const configuration = Symbol("Server packages configuration")
 const setupRoutes = Symbol("Setup api routes")
 
-export default class App {
+module.exports = class App {
   constructor () {
     this[provider] = express()
   }

@@ -1,1 +1,1 @@
-export default () => ("send link for reset password")
+module.exports = () => ("send link for reset password")

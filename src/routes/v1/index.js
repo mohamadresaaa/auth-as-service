@@ -1,4 +1,4 @@
-import authRoutes from "./auth"
+const authRoutes = require("./auth")
 
 const router = require("express").Router()
 

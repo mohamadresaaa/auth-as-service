@@ -1,4 +1,4 @@
-export class ErrorMessage extends Error {
+class ErrorMessage extends Error {
   constructor (name, message, status, properties, internalProperties) {
     super()
     this.status = status
@@ -17,7 +17,7 @@ export class ErrorMessage extends Error {
   }
 }
 
-export class PublicErrorMessage {
+class PublicErrorMessage {
   constructor (err) {
     this.name = err.name
     this.message = err.message
@@ -26,7 +26,7 @@ export class PublicErrorMessage {
   }
 }
 
-export class PublicInfoMessage {
+class PublicInfoMessage {
   constructor (message, status, properties) {
     this.message = message
     this.status = status
@@ -45,3 +45,5 @@ export class PublicInfoMessage {
     return new PublicInfoMessage(`${resource} was updated`, 201, properties)
   }
 }
+
+module.exports = { ErrorMessage, PublicErrorMessage, PublicInfoMessage }

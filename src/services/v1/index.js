@@ -1,7 +1,7 @@
-import passwordRecovery from "./auth/passwordRecovery"
-import resetPassword from "./auth/resetPassword"
-import signIn from "./auth/signIn"
-import signUp from "./auth/signUp"
+const passwordRecovery = require("./auth/passwordRecovery")
+const resetPassword = require("./auth/resetPassword")
+const signIn = require("./auth/signIn")
+const signUp = require("./auth/signUp")
 
 module.exports = {
   signUp,

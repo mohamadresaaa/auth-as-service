@@ -1,4 +1,4 @@
-import auth from "./authController"
+const auth = require("./authController")
 
 module.exports = {
   auth

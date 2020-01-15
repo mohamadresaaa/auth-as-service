@@ -1,22 +1,24 @@
-import joi from "@hapi/joi"
+const joi = require("@hapi/joi")
 
-export const register = joi.object().keys({
+const register = joi.object().keys({
   email: joi.string().email({ minDomainSegments: 2 }).required(),
   password: joi.string().min(8).required(),
   username: joi.string().alphanum().required()
 })
 
-export const login = joi.object().keys({
+const login = joi.object().keys({
   email: joi.string().required(),
   password: joi.string().required()
 })
 
-export const passwordRecovery = joi.object().keys({
+const passwordRecovery = joi.object().keys({
   email: joi.string().email({ minDomainSegments: 2 }).required()
 })
 
-export const resetPassword = joi.object().keys({
+const resetPassword = joi.object().keys({
   code: joi.string().required(),
   password: joi.string().min(8).required(),
   passwordConfirmation: joi.string().valid(joi.ref("password")).messages({ "any.only": "passwordConfirmation must match password" })
 })
+
+module.exports = { register, login, passwordRecovery, resetPassword }

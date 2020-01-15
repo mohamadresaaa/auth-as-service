@@ -1,6 +1,6 @@
-import chalk from "chalk"
+const chalk = require("chalk")
 
 /** Customize log
  * @package chalk
  */
-export default (message, color = "cyan") => (console.log(chalk[color].bold(message)))
+module.exports = (message, color = "cyan") => (console.log(chalk[color].bold(message)))

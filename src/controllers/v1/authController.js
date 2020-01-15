@@ -1,7 +1,7 @@
-import baseController from "../baseController"
+const baseController = require("../baseController")
 
 // eslint-disable-next-line new-parens
-export default new class AuthController extends baseController {
+module.exports = new class AuthController extends baseController {
   async registration (req, res, next) {
     try {
       const result = this[Symbol.for("services")].v1.signUp()

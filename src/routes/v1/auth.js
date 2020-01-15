@@ -1,6 +1,6 @@
-import { login, passwordRecovery, register, resetPassword } from "../../utilities/validatorSchema"
-import { v1 } from "../../controllers"
-import { validator } from "../../middleware/validator"
+const { login, passwordRecovery, register, resetPassword } = require("../../utilities/validatorSchema")
+const { v1 } = require("../../controllers")
+const validator = require("../../middleware/validator")
 
 const router = require("express").Router()
 

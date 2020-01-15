@@ -1,7 +1,7 @@
-import { ErrorMessage, PublicErrorMessage } from "../lib/messages"
-import fs from "fs"
+const { ErrorMessage, PublicErrorMessage } = require("../lib/messages")
+const fs = require("fs")
 
-export const apiErrorHandler = (error, req, res, next) => {
+const apiErrorHandler = (error, req, res, next) => {
   if (req.file) fs.unlinkSync(req.file.path)
 
   switch (process.env.MODE || "development") {
@@ -15,10 +15,12 @@ export const apiErrorHandler = (error, req, res, next) => {
   }
 }
 
-export const apiError404 = (req, res, next) => {
+const apiError404 = (req, res, next) => {
   try {
     throw new PublicErrorMessage(ErrorMessage.errNotFound())
   } catch (error) {
     next(error)
   }
 }
+
+module.exports = { apiErrorHandler, apiError404 }

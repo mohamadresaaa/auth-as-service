@@ -1,1 +1,1 @@
-export default () => ("sign in user")
+module.exports = () => ("sign in user")

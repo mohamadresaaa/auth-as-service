@@ -1,8 +1,8 @@
-import autoBind from "auto-bind"
-import models from "../models"
-import services from "../services"
+const autoBind = require("auto-bind")
+const models = require("../models")
+const services = require("../services")
 
-export default class BaseController {
+module.exports = class BaseController {
   constructor () {
     // Binding methods for using on child classes
     autoBind(this)

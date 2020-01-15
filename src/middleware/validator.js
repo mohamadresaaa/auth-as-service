@@ -1,12 +1,12 @@
-import { ErrorMessage } from "../lib/messages"
-import fs from "fs"
+const { ErrorMessage } = require("../lib/messages")
+const fs = require("fs")
 
 /** validation data
  * @package joi
  * @param schema
  * @return values & error
  */
-export const validator = schema => {
+module.exports = schema => {
   return (req, res, next) => {
     const { error, value } = schema.validate(req.body)
     if (error) {
