@@ -1,3 +1,3 @@
-export const sum = (a, b) => {
+module.exports = (a, b) => {
   return a + b
 }

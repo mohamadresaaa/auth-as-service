@@ -1,4 +1,4 @@
-import { sum } from "./sum"
+const sum = require("./sum")
 
 // eslint-disable-next-line no-undef
 test("adds 1 + 2 to equal 3", () => {
