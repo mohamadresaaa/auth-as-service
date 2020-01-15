@@ -10,7 +10,9 @@ module.exports = {
   globals: {
     Atomics: "readonly",
     SharedArrayBuffer: "readonly",
-    config: "readonly"
+    config: "readonly",
+    test: "readonly",
+    expect: "readonly"
   },
   rules: {
     semi: ["error", "never"],
