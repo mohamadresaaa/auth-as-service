@@ -13,7 +13,8 @@ export default new class AuthController extends baseController {
 
   async login (req, res, next) {
     try {
-      res.send("user login")
+      const result = this[Symbol.for("services")].v1.signIn()
+      res.send(result)
     } catch (error) {
       next(error)
     }
