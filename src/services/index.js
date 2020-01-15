@@ -1,14 +1,14 @@
 import fs from "fs"
 import path from "path"
 
-const controllers = {}
+const services = {}
 
-// read versions of controllers
+// read versions of services
 const versions = fs.readdirSync(path.resolve(__dirname)).filter(item => !item.match(/\.js/))
 
 // read version directory
 for (const version of versions) {
-  controllers[version] = require(`${path.resolve(__dirname, version)}`)
+  services[version] = require(`${path.resolve(__dirname, version)}`)
 }
 
-module.exports = controllers
+module.exports = services
