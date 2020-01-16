@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose")
+const { hash, genSaltSync } = require("bcrypt")
 
 const userSchema = new Schema({
   avatar: {
@@ -57,5 +58,17 @@ const userSchema = new Schema({
 userSchema.index({ email: 1 })
 userSchema.index({ username: 1 })
 userSchema.index({ createdAt: -1 })
+
+userSchema.pre("save", async function(next) {
+  try {
+    // If password modified, hash it
+    if (this.isModified("password")) {
+      this.password = await hash(this.password, genSaltSync(15))
+      next()
+    }
+  } catch (err) {
+    next(err)
+  }
+})
 
 module.exports = model("User", userSchema)
