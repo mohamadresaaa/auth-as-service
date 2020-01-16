@@ -4,8 +4,8 @@ const baseController = require("../baseController")
 module.exports = new class AuthController extends baseController {
   async registration (req, res, next) {
     try {
-      const result = this[Symbol.for("services")].v1.signUp()
-      res.send(result)
+      await this[Symbol.for("services")].v1.signUp(this, req.body, res)
+      // res.send(result)
     } catch (error) {
       next(error)
     }
