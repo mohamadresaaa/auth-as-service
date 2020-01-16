@@ -1,5 +1,5 @@
-const { ErrorMessage, PublicErrorMessage } = require("../lib/messages")
 const fs = require("fs")
+const { ErrorMessage, PublicErrorMessage } = require("../lib/messages")
 
 const apiErrorHandler = (error, req, res, next) => {
   if (req.file) fs.unlinkSync(req.file.path)

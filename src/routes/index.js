@@ -5,7 +5,7 @@ const path = require("path")
 const router = express.Router()
 
 // Read version of routes
-const versions = fs.readdirSync(path.resolve(__dirname)).filter(item => !item.match(/\.js/))
+const versions = fs.readdirSync(path.resolve(__dirname)).filter((item) => !item.match(/\.js/))
 
 // Use routes version
 for (const version of versions) {

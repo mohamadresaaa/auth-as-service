@@ -1,4 +1,4 @@
-const { ErrorMessage } =  require("../lib/messages")
+const { ErrorMessage } = require("../lib/messages")
 
 /** Just allow application/json content type
  * @param req
@@ -8,7 +8,6 @@ const { ErrorMessage } =  require("../lib/messages")
 module.exports = (req, _res, next) => {
   if (req.accepts("application/json")) {
     return next()
-  } else {
-    return next(new ErrorMessage("Content Type not supported", "server just supports \"application/json\" content type", 400))
   }
+  return next(new ErrorMessage("Content Type not supported", "server just supports \"application/json\" content type", 400))
 }

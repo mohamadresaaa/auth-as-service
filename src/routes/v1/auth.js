@@ -1,4 +1,6 @@
-const { login, passwordRecovery, register, resetPassword } = require("../../utilities/validatorSchema")
+const {
+  login, passwordRecovery, register, resetPassword
+} = require("../../utilities/validatorSchema")
 const { v1 } = require("../../controllers")
 const validator = require("../../middleware/validator")
 

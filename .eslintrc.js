@@ -1,11 +1,11 @@
 module.exports = {
-  root: true,
   env: {
+    commonjs: true,
     es6: true,
     node: true
   },
   extends: [
-    "standard"
+    'standard'
   ],
   globals: {
     Atomics: "readonly",
@@ -13,6 +13,9 @@ module.exports = {
     config: "readonly",
     test: "readonly",
     expect: "readonly"
+  },
+  parserOptions: {
+    ecmaVersion: 2018
   },
   rules: {
     semi: ["error", "never"],

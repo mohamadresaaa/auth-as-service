@@ -1,12 +1,12 @@
-const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
 const bodyParser = require("body-parser")
-const contentType = require("./utilities/contentType")
 const { createServer } = require("http")
 const express = require("express")
 const helmet = require("helmet")
-const logger = require("./utilities/logger")
 const mongoose = require("mongoose")
 const morgan = require("morgan")
+const logger = require("./utilities/logger")
+const contentType = require("./utilities/contentType")
+const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
 const routes = require("./routes")
 
 /** @define Private properties and methods */
@@ -49,7 +49,7 @@ module.exports = class App {
     mongoose.Promise = global.Promise
     mongoose.connect(config.database.mongodb[Symbol.for("mongodb url")], {
       ...config.database.mongodb[Symbol.for("mongodb options")]
-    }, err => err ? logger(err.message, "red") : logger("Database connected"))
+    }, (err) => (err ? logger(err.message, "red") : logger("Database connected")))
   }
 
   /** Setup and using packages

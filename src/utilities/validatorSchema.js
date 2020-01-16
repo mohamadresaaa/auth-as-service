@@ -21,4 +21,6 @@ const resetPassword = joi.object().keys({
   passwordConfirmation: joi.string().valid(joi.ref("password")).messages({ "any.only": "passwordConfirmation must match password" })
 })
 
-module.exports = { register, login, passwordRecovery, resetPassword }
+module.exports = {
+  register, login, passwordRecovery, resetPassword
+}

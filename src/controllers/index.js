@@ -4,7 +4,7 @@ const path = require("path")
 const controllers = {}
 
 // read versions of controllers
-const versions = fs.readdirSync(path.resolve(__dirname)).filter(item => !item.match(/\.js/))
+const versions = fs.readdirSync(path.resolve(__dirname)).filter((item) => !item.match(/\.js/))
 
 // read version directory
 for (const version of versions) {
