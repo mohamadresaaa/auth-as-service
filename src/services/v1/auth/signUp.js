@@ -8,13 +8,13 @@ module.exports = async (controller, data, res) => {
     // Create a verification code for account activation
 
     // Send verification code to email
-  } catch (error) {
-    throw error
-  } finally {
+
     // Return info message
     return controller.infoMessage(res, {
       message: "Please refer to your email for activation",
       status: 200
     })
+  } catch (error) {
+    throw error
   }
 }

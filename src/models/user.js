@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose")
 const { hash, genSaltSync } = require("bcrypt")
+const { ErrorMessage } = require("../lib/messages")
 
 const userSchema = new Schema({
   avatar: {
@@ -63,11 +64,20 @@ userSchema.pre("save", async function(next) {
   try {
     // If password modified, hash it
     if (this.isModified("password")) {
-      this.password = await hash(this.password, genSaltSync(15))
+      this.password = await hash(this.password, genSaltSync(10))
       next()
     }
   } catch (err) {
     next(err)
+  }
+})
+
+// Manage and prevent copy information from being imported { email, username }
+userSchema.post("save", function(error, doc, next) {
+  if (error.name === "MongoError" && error.code === 11000) {
+    next(new ErrorMessage("Exists Data", `${error.keyPattern.username ? "Username" : "Email"} is already`, 422))
+  } else {
+    next()
   }
 })
 
