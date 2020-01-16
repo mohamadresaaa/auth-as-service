@@ -17,18 +17,25 @@ module.exports = class BaseController {
 
   /** Show public info message
    * @param response express 
-   * @param data
+   * @param {object} data
+   * @param {string} data.message
+   * @param {number} data.status
+   * @param {any} data.properties
    * @return response
    */
-  infoMessage(res, data = { message, status, properties }) {
-    res.status(status).json(data)
+  infoMessage (res, data) {
+    res.status(data.status).json(data)
   }
 
   /** Show error message
-   * @param data
+   * @param {object} data
+   * @param {string} data.name
+   * @param {string} data.message
+   * @param {number} data.status
+   * @param {any} data.properties
    * @return errorMessage
    */
-  errorMessage(data = { name, message, status, properties }) {
+  errorMessage (data) {
     throw new ErrorMessage({ ...data })
   }
 

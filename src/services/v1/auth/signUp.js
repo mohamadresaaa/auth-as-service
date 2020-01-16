@@ -3,7 +3,7 @@ module.exports = async (controller, data, res) => {
     const { User } = controller[Symbol.for("models")]
 
     // Create new user
-    await new User({ ...data }).save()
+    const user = await new User({ ...data }).save()
 
     // Create a verification code for account activation
 
@@ -11,7 +11,10 @@ module.exports = async (controller, data, res) => {
   } catch (error) {
     throw error
   } finally {
-    // Return message
-    return res.json(data)
+    // Return info message
+    return controller.infoMessage(res, {
+      message: "Please refer to your email for activation",
+      status: 200
+    })
   }
 }
