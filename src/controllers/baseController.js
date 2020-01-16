@@ -20,7 +20,7 @@ module.exports = class BaseController {
    * @param data
    * @return response
    */
-  infoMessage(res, data = { name, message, status, properties }) {
+  infoMessage(res, data = { message, status, properties }) {
     res.status(status).json(data)
   }
 
