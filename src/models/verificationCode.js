@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose")
+const { v4 } = require("uuid")
 
 const verificationCodeSchema = new Schema({
     for: {
@@ -6,7 +7,7 @@ const verificationCodeSchema = new Schema({
         type: String,
     },
     code: {
-        // default: v4(),
+        default: v4(),
         required: true,
         type: String,
         unique: true,
