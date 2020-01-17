@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose")
 const { compare, hash, genSaltSync } = require("bcrypt")
 const { ErrorMessage } = require("../lib/messages")
+const { sign } = require("jsonwebtoken")
 
 const userSchema = new Schema({
   avatar: {
@@ -88,5 +89,22 @@ userSchema.post("save", function(error, doc, next) {
 userSchema.methods.comparePassword = async function(password) {
   return await compare(password, this.password)
 }
+
+/** Create session if user login is successful and return jwt token
+ * @return {string} token
+ */
+userSchema.methods.generateSession = async function() {
+  // Generate jwt token
+  const token = sign({
+    iss: "jraw",
+    sub: this.id,
+  }, "secretKey")
+
+  // Create new session
+
+  // Return jwt token
+  return token
+}
+
 
 module.exports = model("User", userSchema)
