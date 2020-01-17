@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose")
-const { hash, genSaltSync } = require("bcrypt")
+const { compare, hash, genSaltSync } = require("bcrypt")
 const { ErrorMessage } = require("../lib/messages")
 
 const userSchema = new Schema({
@@ -80,5 +80,13 @@ userSchema.post("save", function(error, doc, next) {
     next()
   }
 })
+
+/** Compare passwords
+ * @param {string} password
+ * @return true/false
+ */
+userSchema.methods.comparePassword = async function(password) {
+  return await compare(password, this.password)
+}
 
 module.exports = model("User", userSchema)
