@@ -1,6 +1,6 @@
 module.exports = async (controller, data, res) => {
   try {
-    // Model { User, VerificationCode }
+    // { User, VerificationCode } Model 
     const { User, VerificationCode } = controller[Symbol.for("models")]
 
     // Create new user
