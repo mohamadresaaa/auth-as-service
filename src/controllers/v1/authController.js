@@ -12,8 +12,7 @@ module.exports = new class AuthController extends baseController {
 
   async login (req, res, next) {
     try {
-      const result = this[Symbol.for("services")].v1.signIn()
-      res.send(result)
+      await this[Symbol.for("services")].v1.signIn(this, req.body, res)
     } catch (error) {
       next(error)
     }
