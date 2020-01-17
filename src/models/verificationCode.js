@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose")
 
 const verificationCodeSchema = new Schema({
-    action: {
+    for: {
         required: true,
-        type: Number,
+        type: String,
     },
     code: {
         // default: v4(),
@@ -30,4 +30,4 @@ const verificationCodeSchema = new Schema({
 verificationCodeSchema.index({ code: 1 })
 verificationCodeSchema.index({ expiryDate: -1 })
 
-module.exports = model("verificationCode", verificationCodeSchema)
+module.exports = model("VerificationCode", verificationCodeSchema)
