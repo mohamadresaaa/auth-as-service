@@ -6,7 +6,7 @@ const verificationCodeSchema = new Schema({
         type: Number,
     },
     code: {
-        default: v4(),
+        // default: v4(),
         required: true,
         type: String,
         unique: true,
@@ -22,7 +22,7 @@ const verificationCodeSchema = new Schema({
     user: {
         ref: "User",
         required: true,
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
     },
 })
 
