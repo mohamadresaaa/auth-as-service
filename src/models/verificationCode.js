@@ -2,29 +2,29 @@ const { Schema, model } = require("mongoose")
 const { v4 } = require("uuid")
 
 const verificationCodeSchema = new Schema({
-    for: {
-        required: true,
-        type: String,
-    },
-    code: {
-        default: v4(),
-        required: true,
-        type: String,
-        unique: true,
-    },
-    expiryDate: {
-        required: true,
-        type: Date,
-    },
-    used: {
-        default: false,
-        type: Boolean,
-    },
-    user: {
-        ref: "User",
-        required: true,
-        type: Schema.Types.ObjectId,
-    },
+  for: {
+    required: true,
+    type: String
+  },
+  code: {
+    default: v4(),
+    required: true,
+    type: String,
+    unique: true
+  },
+  expiryDate: {
+    required: true,
+    type: Date
+  },
+  used: {
+    default: false,
+    type: Boolean
+  },
+  user: {
+    ref: "User",
+    required: true,
+    type: Schema.Types.ObjectId
+  }
 })
 
 // Index fields

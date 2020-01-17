@@ -61,7 +61,7 @@ userSchema.index({ email: 1 })
 userSchema.index({ username: 1 })
 userSchema.index({ createdAt: -1 })
 
-userSchema.pre("save", async function(next) {
+userSchema.pre("save", async function (next) {
   try {
     // If password modified, hash it
     if (this.isModified("password")) {
@@ -74,7 +74,7 @@ userSchema.pre("save", async function(next) {
 })
 
 // Manage and prevent copy information from being imported { email, username }
-userSchema.post("save", function(error, doc, next) {
+userSchema.post("save", function (error, doc, next) {
   if (error.name === "MongoError" && error.code === 11000) {
     next(new ErrorMessage("Exists Data", `${error.keyPattern.username ? "Username" : "Email"} is already`, 422))
   } else {
@@ -86,18 +86,18 @@ userSchema.post("save", function(error, doc, next) {
  * @param {string} password
  * @return true/false
  */
-userSchema.methods.comparePassword = async function(password) {
-  return await compare(password, this.password)
+userSchema.methods.comparePassword = async function (password) {
+  return compare(password, this.password)
 }
 
 /** Create session if user login is successful and return jwt token
  * @return {string} token
  */
-userSchema.methods.generateSession = async function() {
+userSchema.methods.generateSession = async function () {
   // Generate jwt token
   const token = sign({
     iss: "jraw",
-    sub: this.id,
+    sub: this.id
   }, "secretKey")
 
   // Create new session
@@ -105,6 +105,5 @@ userSchema.methods.generateSession = async function() {
   // Return jwt token
   return token
 }
-
 
 module.exports = model("User", userSchema)

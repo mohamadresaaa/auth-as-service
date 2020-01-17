@@ -20,7 +20,7 @@ module.exports = {
   rules: {
     semi: ["error", "never"],
     quotes: ["error", "double"],
-    "no-useless-catch": ["error", "throw"],
+    "no-useless-catch": 0,
     "sort-imports": ["error", {
       "ignoreCase": false,
       "ignoreDeclarationSort": false,

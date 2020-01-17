@@ -15,7 +15,7 @@ module.exports = class BaseController {
   }
 
   /** Show public info message
-   * @param response express 
+   * @param response express
    * @param {object} data
    * @param {string} data.message
    * @param {number} data.status
@@ -25,5 +25,4 @@ module.exports = class BaseController {
   infoMessage (res, data) {
     res.status(data.status).json(data)
   }
-
 }
