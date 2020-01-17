@@ -26,24 +26,4 @@ class PublicErrorMessage {
   }
 }
 
-class PublicInfoMessage {
-  constructor (message, status, properties) {
-    this.message = message
-    this.status = status
-    this.properties = properties
-  }
-
-  static infoDeleted (resource, properties) {
-    return new PublicInfoMessage(`${resource} was deleted`, 204, properties)
-  }
-
-  static infoCreated (resource, properties) {
-    return new PublicInfoMessage(`${resource} was created`, 201, properties)
-  }
-
-  static infoUpdated (resource, properties) {
-    return new PublicInfoMessage(`${resource} was updated`, 201, properties)
-  }
-}
-
-module.exports = { ErrorMessage, PublicErrorMessage, PublicInfoMessage }
+module.exports = { ErrorMessage, PublicErrorMessage }
