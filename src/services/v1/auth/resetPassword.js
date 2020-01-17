@@ -31,7 +31,7 @@ module.exports = async (controller, { code, password }, res) => {
         }
 
         // Otherwise, return error message
-        throw new Error(new ErrorMessage("Invalid verification code", "Verification code is incorrect", 422))
+        throw new ErrorMessage("Invalid verification code", "Verification code is incorrect", 422)
     } catch (error) {
         throw error
     }
