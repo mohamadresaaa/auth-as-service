@@ -10,7 +10,7 @@ const router = require("express").Router()
 router.post("/register", validator(register), v1.auth.registration)
 router.post("/login", validator(login), v1.auth.login)
 router.post("/twoFactorAuth", (req, res) => res.send("twoFactorAuth"))
-router.post("/recoveryPassword", validator(passwordRecovery), v1.auth.forgotPassword)
+router.post("/passwordRecovery", validator(passwordRecovery), v1.auth.forgotPassword)
 router.post("/resetPassword", validator(resetPassword), v1.auth.resetPassword)
 
 // Exports router

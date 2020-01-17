@@ -12,7 +12,7 @@ const login = joi.object().keys({
 })
 
 const passwordRecovery = joi.object().keys({
-  email: joi.string().email({ minDomainSegments: 2 }).required()
+  email: joi.string().required()
 })
 
 const resetPassword = joi.object().keys({

@@ -5,7 +5,6 @@ module.exports = new class AuthController extends baseController {
   async registration (req, res, next) {
     try {
       await this[Symbol.for("services")].v1.signUp(this, req.body, res)
-      // res.send(result)
     } catch (error) {
       next(error)
     }
@@ -22,8 +21,7 @@ module.exports = new class AuthController extends baseController {
 
   async forgotPassword (req, res, next) {
     try {
-      const result = this[Symbol.for("services")].v1.passwordRecovery()
-      res.send(result)
+      await this[Symbol.for("services")].v1.passwordRecovery(this, req.body, res)
     } catch (error) {
       next(error)
     }
