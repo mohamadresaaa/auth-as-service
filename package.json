@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "dev": "nodemon src",
-    "start": "npm run build && node dist",
-    "test": "jest"
+    "nodemon": "nodemon src",
+    "dev": "concurrently \"npm run eslint\" \"npm run nodemon\" -s",
+    "start": "node src",
+    "eslint": "eslint --fix ./"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "uuid": "^3.4.0"
   },
   "devDependencies": {
+    "concurrently": "^5.0.2",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.0",
