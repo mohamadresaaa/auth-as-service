@@ -9,6 +9,10 @@ const sessionSchema = new Schema({
     required: true,
     type: Date
   },
+  ip: {
+    required: true,
+    type: String
+  },
   token: {
     required: true,
     type: String,
