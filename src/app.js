@@ -8,6 +8,7 @@ const logger = require("./utilities/logger")
 const contentType = require("./utilities/contentType")
 const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
 const routes = require("./routes")
+const device = require("./middleware/device")
 
 /** @define Private properties and methods */
 const provider = Symbol("Application provider")
@@ -61,6 +62,7 @@ module.exports = class App {
     this[provider].use(bodyParser.json())
     this[provider].use(bodyParser.urlencoded({ extended: true }))
     this[provider].use(contentType)
+    this[provider].use(device)
     this[provider].use(morgan(config.server.logMode))
   }
 

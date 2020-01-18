@@ -9,7 +9,9 @@ const router = require("express").Router()
 // Define routes
 router.post("/register", validator(register), v1.auth.registration)
 router.post("/login", validator(login), v1.auth.login)
-router.post("/twoFactorAuth", (req, res) => res.send("twoFactorAuth"))
+router.get("/twoFactorAuth", (req, res) => {
+  res.json(req.device)
+})
 router.post("/passwordRecovery", validator(passwordRecovery), v1.auth.forgotPassword)
 router.post("/resetPassword", validator(resetPassword), v1.auth.resetPassword)
 
