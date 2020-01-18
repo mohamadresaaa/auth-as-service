@@ -2,6 +2,7 @@ const { Schema, model } = require("mongoose")
 const { compare, hash, genSaltSync } = require("bcrypt")
 const { ErrorMessage } = require("../lib/messages")
 const { sign } = require("jsonwebtoken")
+const Session = require("./session")
 
 const userSchema = new Schema({
   avatar: {
@@ -91,9 +92,11 @@ userSchema.methods.comparePassword = async function (password) {
 }
 
 /** Create session if user login is successful and return jwt token
+ * @param {string} ip
+ * @param {object} device
  * @return {string} token
  */
-userSchema.methods.generateSession = async function () {
+userSchema.methods.generateSession = async function (ip, device) {
   // Generate jwt token
   const token = sign({
     iss: "jraw",
@@ -101,6 +104,13 @@ userSchema.methods.generateSession = async function () {
   }, "secretKey")
 
   // Create new session
+  await new Session({
+    device,
+    expiryDate: new Date(new Date().setDate(new Date().getDate() + 30)),
+    ip,
+    token,
+    user: this.id
+  }).save()
 
   // Return jwt token
   return token

@@ -1,6 +1,6 @@
 const { ErrorMessage } = require("../../../lib/messages")
 
-module.exports = async (controller, { email, password }, res) => {
+module.exports = async (controller, { body: { email, password }, ip, device }, res) => {
   try {
     // User model
     const { User } = controller[Symbol.for("models")]
@@ -26,7 +26,7 @@ module.exports = async (controller, { email, password }, res) => {
           message: "Sign in successfully completed",
           status: 200,
           properties: {
-            token: await user.generateSession()
+            token: await user.generateSession(ip, device)
           }
         })
       }
