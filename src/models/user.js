@@ -116,4 +116,22 @@ userSchema.methods.generateSession = async function (ip, device) {
   return token
 }
 
+/** Convert and customize user information
+ * @param {string} token
+ * @return {object} user
+ */
+userSchema.methods.toAuthJson = function (token) {
+  return {
+    avatar: this.avatar,
+    email: this.email,
+    firstName: this.firstName,
+    lastName: this.lastName,
+    username: this.username,
+    roles: this.role,
+    bio: this.bio,
+    birthday: this.birthday ? this.birthday.toISOString().slice(0, 10) : this.birthday,
+    token
+  }
+}
+
 module.exports = model("User", userSchema)
