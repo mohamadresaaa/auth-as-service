@@ -1,3 +1,12 @@
+/** Sign up user
+ * @param {object} controller
+ * @param {object} data from req.body
+ * @param {string} data.email
+ * @param {string} data.username
+ * @param {string} data.password
+ * @param {object} res from express
+ * @returns {response} message
+ */
 module.exports = async (controller, data, res) => {
   try {
     // { User, VerificationCode } Model

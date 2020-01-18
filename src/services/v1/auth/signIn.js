@@ -1,5 +1,14 @@
 const { ErrorMessage } = require("../../../lib/messages")
 
+/** Sign in user
+ * @param {object} controller
+ * @param {string} email from req.body
+ * @param {string} password from req.body
+ * @param {string} ip from req.ip
+ * @param {string} device from req.device
+ * @param {object} res from express
+ * @returns {response} message and user
+ */
 module.exports = async (controller, { body: { email, password }, ip, device }, res) => {
   try {
     // User model

@@ -1,5 +1,12 @@
 const { ErrorMessage } = require("../../../lib/messages")
 
+/** Reset password if validation code is valid
+ * @param {object} controller
+ * @param {string} code from req.body
+ * @param {string} password from req.body
+ * @param {object} res from express
+ * @return {response} message
+ */
 module.exports = async (controller, { code, password }, res) => {
   try {
     // VerificationCode model

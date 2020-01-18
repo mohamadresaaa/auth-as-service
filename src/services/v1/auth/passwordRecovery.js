@@ -1,3 +1,9 @@
+/** Submit password recovery link
+ * @param {object} controller
+ * @param {string} email from req.body
+ * @param {object} res from express
+ * @return {response} message
+ */
 module.exports = async (controller, { email }, res) => {
   try {
     // { User, VerificationCode } Model
