@@ -21,11 +21,6 @@ module.exports = {
     semi: ["error", "never"],
     quotes: ["error", "double"],
     "no-useless-catch": 0,
-    "sort-imports": ["error", {
-      "ignoreCase": false,
-      "ignoreDeclarationSort": false,
-      "ignoreMemberSort": false,
-      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
-    }]
+    "sort-keys": "error"
   }
 }
