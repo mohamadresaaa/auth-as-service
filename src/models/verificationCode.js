@@ -2,10 +2,6 @@ const { Schema, model } = require("mongoose")
 const { v4 } = require("uuid")
 
 const verificationCodeSchema = new Schema({
-  for: {
-    required: true,
-    type: String
-  },
   code: {
     default: v4(),
     required: true,
@@ -15,6 +11,10 @@ const verificationCodeSchema = new Schema({
   expiryDate: {
     required: true,
     type: Date
+  },
+  for: {
+    required: true,
+    type: String
   },
   used: {
     default: false,

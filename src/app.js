@@ -1,20 +1,20 @@
-const bodyParser = require("body-parser")
+const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
 const { createServer } = require("http")
+const bodyParser = require("body-parser")
+const contentType = require("./utilities/contentType")
+const device = require("./middleware/device")
 const express = require("express")
 const helmet = require("helmet")
+const logger = require("./utilities/logger")
 const mongoose = require("mongoose")
 const morgan = require("morgan")
-const logger = require("./utilities/logger")
-const contentType = require("./utilities/contentType")
-const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
 const routes = require("./routes")
-const device = require("./middleware/device")
 
 /** @define Private properties and methods */
+const configuration = Symbol("Server packages configuration")
 const provider = Symbol("Application provider")
 const setupExpress = Symbol("Express installation")
 const setupMongodb = Symbol("Mongodb installation and configuration")
-const configuration = Symbol("Server packages configuration")
 const setupRoutes = Symbol("Setup api routes")
 
 module.exports = class App {

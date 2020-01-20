@@ -23,4 +23,4 @@ const apiError404 = (req, res, next) => {
   }
 }
 
-module.exports = { apiErrorHandler, apiError404 }
+module.exports = { apiError404, apiErrorHandler }

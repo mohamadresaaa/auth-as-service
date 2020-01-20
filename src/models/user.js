@@ -28,11 +28,11 @@ const userSchema = new Schema({
     default: null,
     type: String
   },
-  lastName: {
+  job: {
     default: null,
     type: String
   },
-  job: {
+  lastName: {
     default: null,
     type: String
   },
@@ -123,14 +123,14 @@ userSchema.methods.generateSession = async function (ip, device) {
 userSchema.methods.toAuthJson = function (token) {
   return {
     avatar: this.avatar,
+    bio: this.bio,
+    birthday: this.birthday ? this.birthday.toISOString().slice(0, 10) : this.birthday,
     email: this.email,
     firstName: this.firstName,
     lastName: this.lastName,
-    username: this.username,
     roles: this.role,
-    bio: this.bio,
-    birthday: this.birthday ? this.birthday.toISOString().slice(0, 10) : this.birthday,
-    token
+    token,
+    username: this.username
   }
 }
 

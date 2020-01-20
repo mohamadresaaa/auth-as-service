@@ -16,8 +16,8 @@ module.exports = async (controller, { email }, res) => {
     if (user) {
       // Create a verification code for password recovery
       const newVerificationCode = await new VerificationCode({
-        for: "Password recovery",
         expiryDate: new Date(new Date().setMinutes(new Date().getMinutes() + 10)),
+        for: "Password recovery",
         user: user.id
       }).save()
 

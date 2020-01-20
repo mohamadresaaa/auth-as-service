@@ -13,9 +13,9 @@ module.exports = async (controller, code, res) => {
 
     // Find verification code
     const validCode = await VerificationCode.findOne({
-      for: "Password recovery",
       code,
       expiryDate: { $gt: new Date() },
+      for: "Password recovery",
       used: false
     }).populate({ path: "user", select: "email" }).lean()
 
@@ -23,8 +23,8 @@ module.exports = async (controller, code, res) => {
     if (validCode) {
       return controller.infoMessage(res, {
         message: "Verification code is valid",
-        status: 200,
-        properties: { email: validCode.user.email }
+        properties: { email: validCode.user.email },
+        status: 200
       })
     }
 

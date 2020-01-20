@@ -33,10 +33,8 @@ module.exports = async (controller, { body: { email, password }, ip, device }, r
         // Generate jwt token and save to session, return info message and user
         return controller.infoMessage(res, {
           message: "Sign in successfully completed",
-          status: 200,
-          properties: {
-            ...user.toAuthJson(await user.generateSession(ip, device))
-          }
+          properties: { ...user.toAuthJson(await user.generateSession(ip, device)) },
+          status: 200
         })
       }
 

@@ -14,9 +14,9 @@ module.exports = async (controller, { code, password }, res) => {
 
     // Find verification code
     const verifyCode = await VerificationCode.findOne({
-      for: "Password recovery",
       code,
       expiryDate: { $gt: new Date() },
+      for: "Password recovery",
       used: false
     }).populate("user")
 

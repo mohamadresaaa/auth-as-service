@@ -17,8 +17,8 @@ module.exports = async (controller, data, res) => {
 
     // Create a verification code for account activation
     const newVerificationCode = await new VerificationCode({
-      for: "Account activation",
       expiryDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+      for: "Account activation",
       user: newUser.id
     }).save()
 
