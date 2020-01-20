@@ -28,7 +28,7 @@ module.exports = new class AuthController extends baseController {
 
   async verifyCode (req, res, next) {
     try {
-      // await this[Symbol.for("services")].v1.passwordRecovery(this, req.body, res)
+      await this[Symbol.for("services")].v1.verifyCode(this, req.params.code, res)
     } catch (error) {
       next(error)
     }
