@@ -18,7 +18,7 @@ const passwordRecovery = joi.object().keys({
 const resetPassword = joi.object().keys({
   code: joi.string().required(),
   password: joi.string().min(8).required(),
-  passwordConfirmation: joi.string().valid(joi.ref("password")).messages({ "any.only": "passwordConfirmation must match password" })
+  confirmPassword: joi.string().valid(joi.ref("password")).messages({ "any.only": "confirm password must match password" })
 })
 
 module.exports = {
