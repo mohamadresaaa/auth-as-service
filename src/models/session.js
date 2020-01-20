@@ -23,6 +23,6 @@ const sessionSchema = new Schema({
     required: true,
     type: Schema.Types.ObjectId
   }
-}, { timestamps: true, autoIndex: true })
+}, { autoIndex: true, timestamps: true })
 
 module.exports = model("session", sessionSchema)
