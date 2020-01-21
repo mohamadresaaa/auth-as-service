@@ -1,3 +1,4 @@
+const accountRoutes = require("./account")
 const authRoutes = require("./auth")
 const userRoutes = require("./user")
 
@@ -7,6 +8,7 @@ const router = require("express").Router()
 const authorization = require("../../middleware/authorization")
 
 // Using routes
+router.use("/account", accountRoutes)
 router.use("/auth", authRoutes)
 router.use("/user", authorization, userRoutes)
 
