@@ -2,7 +2,7 @@ const baseController = require("../baseController")
 
 // eslint-disable-next-line new-parens
 module.exports = new class AuthController extends baseController {
-  async registration (req, res, next) {
+  async signUp (req, res, next) {
     try {
       await this[Symbol.for("services")].v1.signUp(this, req.body, res)
     } catch (error) {
@@ -10,7 +10,7 @@ module.exports = new class AuthController extends baseController {
     }
   }
 
-  async login (req, res, next) {
+  async signIn (req, res, next) {
     try {
       await this[Symbol.for("services")].v1.signIn(this, req, res)
     } catch (error) {
@@ -18,7 +18,7 @@ module.exports = new class AuthController extends baseController {
     }
   }
 
-  async logout (req, res, next) {
+  async signOut (req, res, next) {
     try {
       await this[Symbol.for("services")].v1.signOut(this, req.session, res)
     } catch (error) {
@@ -26,7 +26,7 @@ module.exports = new class AuthController extends baseController {
     }
   }
 
-  async forgotPassword (req, res, next) {
+  async passwordRecovery (req, res, next) {
     try {
       await this[Symbol.for("services")].v1.passwordRecovery(this, req.body, res)
     } catch (error) {
