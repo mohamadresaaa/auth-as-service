@@ -12,7 +12,7 @@ module.exports = new class AccountController extends baseController {
 
   async deactivation (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.deactivation(this, req.params.code, res)
+      await this[Symbol.for("services")].v1.deactivation(this, req, res)
     } catch (error) {
       next(error)
     }
