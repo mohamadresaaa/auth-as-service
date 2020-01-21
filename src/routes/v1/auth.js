@@ -4,6 +4,7 @@ const router = require("express").Router()
 const { v1 } = require("../../controllers")
 
 // Middleware
+const authorization = require("../../middleware/authorization")
 const validator = require("../../middleware/validator")
 
 // Validation schemas
@@ -13,15 +14,20 @@ const {
 
 /** @define routes */
 
-// User registration
+// Sign up user
 router.post("/register",
   validator(register),
   v1.auth.register)
 
-// User login
+// Sign in user
 router.post("/login",
   validator(login),
   v1.auth.login)
+
+// Sign out user
+router.get("/logout",
+  authorization,
+  v1.auth.logout)
 
 // Password recovery link
 router.post("/passwordRecovery",

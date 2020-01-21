@@ -17,5 +17,5 @@ module.exports = {
   reactivation,
   register,
   resetPassword,
-  verifyCode,
+  verifyCode
 }
