@@ -1,5 +1,4 @@
 const accountActivation = require("./account/accountActivation")
-const currentUser = require("./account/currentUser")
 const passwordRecovery = require("./auth/passwordRecovery")
 const profile = require("./user/profile")
 const resetPassword = require("./auth/resetPassword")
@@ -10,7 +9,6 @@ const verifyCode = require("./auth/verifyCode")
 
 module.exports = {
   accountActivation,
-  currentUser,
   passwordRecovery,
   profile,
   resetPassword,
