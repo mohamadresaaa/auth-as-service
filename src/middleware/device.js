@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-escape */
 module.exports = (req, res, next) => {
-  var userAgent = req.headers["user-agent"]
-  var device = {}
+  const userAgent = req.headers["user-agent"]
+  const device = {}
 
   if (/like Mac OS X/.test(userAgent)) {
     device.os = "iOS"
