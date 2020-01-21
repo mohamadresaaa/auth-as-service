@@ -122,15 +122,17 @@ userSchema.methods.generateSession = async function (ip, device) {
  */
 userSchema.methods.toAuthJson = function (token) {
   return {
-    avatar: this.avatar,
-    bio: this.bio,
-    birthday: this.birthday ? this.birthday.toISOString().slice(0, 10) : this.birthday,
-    email: this.email,
-    firstName: this.firstName,
-    lastName: this.lastName,
-    roles: this.role,
     token,
-    username: this.username
+    user: {
+      avatar: this.avatar,
+      bio: this.bio,
+      birthday: this.birthday ? this.birthday.toISOString().slice(0, 10) : this.birthday,
+      email: this.email,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      roles: this.role,
+      username: this.username
+    }
   }
 }
 
