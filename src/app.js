@@ -2,6 +2,7 @@ const { apiError404, apiErrorHandler } = require("./middleware/errorHandle")
 const { createServer } = require("http")
 const bodyParser = require("body-parser")
 const contentType = require("./utilities/contentType")
+const cors = require("cors")
 const device = require("./middleware/device")
 const express = require("express")
 const helmet = require("helmet")
@@ -59,6 +60,11 @@ module.exports = class App {
    */
   [configuration] () {
     this[provider].use(helmet())
+    this[provider].use(cors({
+      credentials: true,
+      methods: "GET, POST, PUT, DELETE",
+      origin: "*"
+    }))
     this[provider].use(bodyParser.json())
     this[provider].use(bodyParser.urlencoded({ extended: true }))
     this[provider].use(contentType)
