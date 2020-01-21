@@ -1,9 +1,9 @@
-import jwt from "jsonwebtoken"
-import Session from "../models/session"
-import { ErrorMessage } from "../lib/messages"
+const jwt = require("jsonwebtoken")
+const Session = require("../models/session")
+const { ErrorMessage } = require("../lib/messages")
 
 // Make sure the user is authenticated
-export default async (req, res, next) => {
+module.exports = async (req, res, next) => {
   try {
     // Get jwt token from header [authorization]
     const token = req.headers.authorization
