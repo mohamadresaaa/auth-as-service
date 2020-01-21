@@ -12,8 +12,8 @@ const {
 } = require("../../utilities/validatorSchema")
 
 // Define routes
-router.post("/register", validator(register), v1.auth.signUp)
-router.post("/login", validator(login), v1.auth.signIn)
+router.post("/register", validator(register), v1.auth.register)
+router.post("/login", validator(login), v1.auth.login)
 router.post("/passwordRecovery", validator(passwordRecovery), v1.auth.passwordRecovery)
 router.get("/verifyCode/:code", v1.auth.verifyCode)
 router.post("/resetPassword", validator(resetPassword), v1.auth.resetPassword)

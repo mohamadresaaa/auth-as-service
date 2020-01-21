@@ -2,23 +2,23 @@ const baseController = require("../baseController")
 
 // eslint-disable-next-line new-parens
 module.exports = new class AuthController extends baseController {
-  async signUp (req, res, next) {
+  async register (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.signUp(this, req.body, res)
+      await this[Symbol.for("services")].v1.register(this, req.body, res)
     } catch (error) {
       next(error)
     }
   }
 
-  async signIn (req, res, next) {
+  async login (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.signIn(this, req, res)
+      await this[Symbol.for("services")].v1.login(this, req, res)
     } catch (error) {
       next(error)
     }
   }
 
-  async signOut (req, res, next) {
+  async logout (req, res, next) {
     try {
       await this[Symbol.for("services")].v1.signOut(this, req.session, res)
     } catch (error) {
