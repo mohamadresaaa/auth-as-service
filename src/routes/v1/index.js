@@ -1,10 +1,11 @@
+// Routes
 const accountRoutes = require("./account")
 const authRoutes = require("./auth")
 const userRoutes = require("./user")
 
 const router = require("express").Router()
 
-// middleware
+// Middleware
 const authorization = require("../../middleware/authorization")
 
 // Using routes
