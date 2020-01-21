@@ -21,10 +21,14 @@ const resetPassword = joi.object().keys({
   password: joi.string().min(8).required()
 })
 
+const deactivation = joi.object().keys({
+  code: joi.string().required()
+})
+
 const reactivation = joi.object().keys({
   username: joi.string().alphanum().required()
 })
 
 module.exports = {
-  login, passwordRecovery, reactivation, register, resetPassword
+  deactivation, login, passwordRecovery, reactivation, register, resetPassword
 }
