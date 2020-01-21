@@ -26,7 +26,7 @@ module.exports = async (req, res, next) => {
       if (session) {
         if (session.user.status !== "block" && session.user.status !== "inactive") {
           // Set user to req.user and return next
-          req.user = session.user
+          req.session = session
           return next()
         } else {
           throw new ErrorMessage("Account status",

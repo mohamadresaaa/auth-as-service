@@ -4,7 +4,7 @@
  * @param {object} res from express
  * @returns {response} message and user
  */
-module.exports = async (controller, user, res) => {
+module.exports = async (controller, { user }, res) => {
   try {
     // Return info message and user information
     return controller.infoMessage(res, {
