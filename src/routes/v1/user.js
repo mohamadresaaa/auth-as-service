@@ -11,10 +11,20 @@ const {
   deactivation
 } = require("../../utilities/validatorSchema")
 
-// Define routes
-router.get("/", v1.user.profile)
-router.get("/logout", v1.auth.logout)
-router.post("/deactivation", validator(deactivation), v1.account.deactivation)
+/** @define routes */
+
+// Show user information
+router.get("/",
+  v1.user.profile)
+
+// Sign out user
+router.get("/logout",
+  v1.auth.logout)
+
+// User account Deactivation
+router.post("/deactivation",
+  validator(deactivation),
+  v1.account.deactivation)
 
 // Exports router
 module.exports = router

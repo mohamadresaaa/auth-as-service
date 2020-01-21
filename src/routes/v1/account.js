@@ -11,9 +11,16 @@ const {
   reactivation
 } = require("../../utilities/validatorSchema")
 
-// Define routes
-router.get("/activation/:code", v1.account.activation)
-router.post("/reactivation", validator(reactivation), v1.account.reactivation)
+/** @define routes */
+
+// User account activation
+router.get("/activation/:code",
+  v1.account.activation)
+
+// User account reactivation
+router.post("/reactivation",
+  validator(reactivation),
+  v1.account.reactivation)
 
 // Exports router
 module.exports = router
