@@ -4,7 +4,7 @@ const baseController = require("../baseController")
 module.exports = new class UserController extends baseController {
   async profile (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.currentUser(this, req.session, res)
+      await this[Symbol.for("services")].v1.profile(this, req.session, res)
     } catch (error) {
       next(error)
     }
