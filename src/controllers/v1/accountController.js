@@ -17,4 +17,12 @@ module.exports = new class AccountController extends baseController {
       next(error)
     }
   }
+
+  async reactivation (req, res, next) {
+    try {
+      await this[Symbol.for("services")].v1.reactivation(this, req, res)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
