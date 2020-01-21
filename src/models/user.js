@@ -130,7 +130,7 @@ userSchema.methods.toAuthJson = function (token) {
       email: this.email,
       firstName: this.firstName,
       lastName: this.lastName,
-      roles: this.role,
+      roles: this.roles,
       username: this.username
     }
   }
