@@ -22,7 +22,7 @@ const resetPassword = joi.object().keys({
 })
 
 const deactivation = joi.object().keys({
-  code: joi.string().required()
+  password: joi.string().required()
 })
 
 const reactivation = joi.object().keys({
