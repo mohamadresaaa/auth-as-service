@@ -9,4 +9,12 @@ module.exports = new class AccountController extends baseController {
       next(error)
     }
   }
+
+  async accountActivation (req, res, next) {
+    try {
+
+    } catch (error) {
+      next(error)
+    }
+  }
 }
