@@ -40,10 +40,10 @@ const userSchema = new Schema({
     required: true,
     type: String
   },
-  roles: {
-    default: ["user"],
-    type: [String]
-  },
+  roles: [{
+    ref: "Role",
+    type: Schema.Types.ObjectId
+  }],
   status: {
     default: "inactive",
     type: String
@@ -55,12 +55,20 @@ const userSchema = new Schema({
     type: String,
     unique: true
   }
-}, { timestamps: true })
+}, {
+  timestamps: true
+})
 
 // Index fields
-userSchema.index({ email: 1 })
-userSchema.index({ username: 1 })
-userSchema.index({ createdAt: -1 })
+userSchema.index({
+  email: 1
+})
+userSchema.index({
+  username: 1
+})
+userSchema.index({
+  createdAt: -1
+})
 
 userSchema.pre("save", async function (next) {
   try {
