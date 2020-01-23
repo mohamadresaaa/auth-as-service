@@ -3,7 +3,8 @@ const { Schema, model } = require("mongoose")
 const roleSchema = new Schema({
   name: {
     required: true,
-    type: String
+    type: String,
+    unique: true
   }
 })
 
