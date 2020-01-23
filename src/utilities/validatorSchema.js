@@ -12,7 +12,7 @@ const passwordRecovery = joi.object().keys({
 const register = joi.object().keys({
   email: joi.string().email({ minDomainSegments: 2 }).required(),
   password: joi.string().min(8).required(),
-  username: joi.string().alphanum().required()
+  username: joi.string().required().regex(/^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,}$/).message("invalid username")
 })
 
 const resetPassword = joi.object().keys({
