@@ -4,7 +4,7 @@ const baseController = require("../baseController")
 module.exports = new class AuthController extends baseController {
   async register (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.register(this, req.body, res)
+      await this[Symbol.for("services")].v1.auth.register(this, req.body, res)
     } catch (error) {
       next(error)
     }
@@ -12,7 +12,7 @@ module.exports = new class AuthController extends baseController {
 
   async login (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.login(this, req, res)
+      await this[Symbol.for("services")].v1.auth.login(this, req, res)
     } catch (error) {
       next(error)
     }
@@ -20,7 +20,7 @@ module.exports = new class AuthController extends baseController {
 
   async logout (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.signOut(this, req.session, res)
+      await this[Symbol.for("services")].v1.auth.signOut(this, req.session, res)
     } catch (error) {
       next(error)
     }
@@ -28,7 +28,7 @@ module.exports = new class AuthController extends baseController {
 
   async passwordRecovery (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.passwordRecovery(this, req.body, res)
+      await this[Symbol.for("services")].v1.auth.passwordRecovery(this, req.body, res)
     } catch (error) {
       next(error)
     }
@@ -36,7 +36,7 @@ module.exports = new class AuthController extends baseController {
 
   async verifyCode (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.verifyCode(this, req.params.code, res)
+      await this[Symbol.for("services")].v1.auth.verifyCode(this, req.params.code, res)
     } catch (error) {
       next(error)
     }
@@ -44,7 +44,7 @@ module.exports = new class AuthController extends baseController {
 
   async resetPassword (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.resetPassword(this, req.body, res)
+      await this[Symbol.for("services")].v1.auth.resetPassword(this, req.body, res)
     } catch (error) {
       next(error)
     }
