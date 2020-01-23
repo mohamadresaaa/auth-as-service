@@ -11,6 +11,10 @@ module.exports = new class SessionController extends baseController {
   }
 
   async remove (req, res, next) {
-
+    try {
+      await this[Symbol.for("services")].v1.session.remove(this, req.params.id, res)
+    } catch (error) {
+      next(error)
+    }
   }
 }
