@@ -8,7 +8,8 @@ module.exports = async (controller, currentSession, res) => {
 
     // Set current session on list of session
     sessions.map(item => {
-      item.id === currentSession.id ? item.isCurrent = true : item.isCurrent = false
+      // eslint-disable-next-line eqeqeq
+      item._id == currentSession.id ? item.isCurrent = true : item.isCurrent = false
     })
 
     return controller.infoMessage(res, {
