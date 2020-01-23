@@ -14,7 +14,8 @@ module.exports = schema => (req, res, next) => {
       fs.unlinkSync(req.file.path)
     }
 
-    return res.status(422).json(new ErrorMessage("Invalid Data", error.details[0].message.replace(/(\\")+/g, ""), 422))
+    // eslint-disable-next-line no-useless-escape
+    return res.status(422).json(new ErrorMessage("Invalid Data", error.details[0].message.replace(/(\")+/g, ""), 422))
   }
 
   if (!req.value) {
