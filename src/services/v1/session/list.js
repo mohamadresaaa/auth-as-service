@@ -13,6 +13,10 @@ module.exports = async (controller, currentSession, res) => {
       item.createdAt = item.createdAt.toISOString().slice(0, 10)
     })
 
+    // Sort sessions
+    sessions.sort((x, y) => x.isCurrent < y.isCurrent ? 1 : -1)
+
+    // Return info message
     return controller.infoMessage(res, {
       message: "Get sessions information successfully",
       properties: { sessions },
