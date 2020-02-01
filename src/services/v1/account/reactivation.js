@@ -6,18 +6,13 @@ const { ErrorMessage } = require("../../../lib/messages")
  * @param {object} res from express
  * @returns {response} message and user
  */
-module.exports = async (controller, { username }, res) => {
+module.exports = async (controller, { email }, res) => {
   try {
     // { User, VerificationCode } model
-    const {
-      User,
-      VerificationCode
-    } = controller[Symbol.for("models")]
+    const { User, VerificationCode } = controller[Symbol.for("models")]
 
-    // Find user with username
-    const user = await User.findOne({
-      username
-    })
+    // Find user
+    const user = await User.findOne({ $or: [{ email }, { username: email }] })
 
     // If user exists, handle it
     if (user) {

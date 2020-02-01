@@ -26,7 +26,7 @@ const deactivation = joi.object().keys({
 })
 
 const reactivation = joi.object().keys({
-  username: joi.string().alphanum().required()
+  email: joi.string().required()
 })
 
 module.exports = {
