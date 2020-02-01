@@ -9,10 +9,15 @@ const { ErrorMessage } = require("../../../lib/messages")
 module.exports = async (controller, { username }, res) => {
   try {
     // { User, VerificationCode } model
-    const { User, VerificationCode } = controller[Symbol.for("models")]
+    const {
+      User,
+      VerificationCode
+    } = controller[Symbol.for("models")]
 
     // Find user with username
-    const user = await User.findOne({ username })
+    const user = await User.findOne({
+      username
+    })
 
     // If user exists, handle it
     if (user) {
@@ -23,14 +28,17 @@ module.exports = async (controller, { username }, res) => {
           403)
       }
 
-      // Create a verification code for account activation
-      const newVerificationCode = await new VerificationCode({
-        expiryDate: new Date(new Date().setDate(new Date().getDate() + 1)),
-        for: "Account activation",
-        user: user.id
-      }).save()
+      // If user is inactive
+      if (user.status === "inactive") {
+        // Create a verification code for account activation
+        const newVerificationCode = await new VerificationCode({
+          expiryDate: new Date(new Date().setDate(new Date().getDate() + 1)),
+          for: "Account activation",
+          user: user.id
+        }).save()
 
-      // Send verification code to email
+        // Send verification code to email
+      }
     }
 
     // Return info message
