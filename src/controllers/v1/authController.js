@@ -20,7 +20,7 @@ module.exports = new class AuthController extends baseController {
 
   async logout (req, res, next) {
     try {
-      await this[Symbol.for("services")].v1.auth.signOut(this, req.session, res)
+      await this[Symbol.for("services")].v1.auth.logout(this, req.session, res)
     } catch (error) {
       next(error)
     }
