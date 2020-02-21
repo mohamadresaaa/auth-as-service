@@ -109,7 +109,7 @@ userSchema.methods.generateSession = async function (ip, device) {
   const token = sign({
     iss: "jraw",
     sub: this.id
-  }, "secretKey")
+  }, config.server[Symbol.for("privateKey")] + config.server[Symbol.for("publicKey")])
 
   // Create new session
   await new Session({
