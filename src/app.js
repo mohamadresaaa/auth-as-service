@@ -70,6 +70,10 @@ module.exports = class App {
     this[provider].use(contentType)
     this[provider].use(device)
     this[provider].use(morgan(config.server.logMode))
+    this[provider].use((req, res, next) => {
+      console.log(req.connection.remoteAddress)
+      next()
+    })
   }
 
   /** Import api routes and errors management
