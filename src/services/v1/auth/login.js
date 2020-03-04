@@ -4,12 +4,13 @@ const { ErrorMessage } = require("../../../lib/messages")
  * @param {object} controller
  * @param {string} email from req.body
  * @param {string} password from req.body
- * @param {string} ip from req.ip
+ * @param {array} headers from req.headers
  * @param {string} device from req.device
  * @param {object} res from express
  * @returns {response} message and user
  */
-module.exports = async (controller, { body: { email, password }, ip, device }, res) => {
+
+module.exports = async (controller, { body: { email, password }, header, device }, res) => {
   try {
     // User model
     const { User } = controller[Symbol.for("models")]
@@ -33,7 +34,7 @@ module.exports = async (controller, { body: { email, password }, ip, device }, r
         // Generate jwt token and save to session, return info message and user
         return controller.infoMessage(res, {
           message: "Sign in successfully completed",
-          properties: { ...user.toAuthJson(await user.generateSession(ip, device)) },
+          properties: { ...user.toAuthJson(await user.generateSession(header("x-forwarded-for"), device)) },
           status: 200
         })
       }
