@@ -10,26 +10,8 @@ const { ErrorMessage } = require("../../../lib/messages")
  * @returns {response} message and user
  */
 
-module.exports = async (controller, { body: { email, password }, header, connection, device }, res) => {
+module.exports = async (controller, { body: { email, password }, clientIp, device }, res) => {
   try {
-    function getClientIp () {
-      var ipAddress
-      // Amazon EC2 / Heroku workaround to get real client IP
-      var forwardedIpsStr = header("x-forwarded-for")
-      if (forwardedIpsStr) {
-        // 'x-forwarded-for' header may return multiple IP addresses in
-        // the format: "client IP, proxy 1 IP, proxy 2 IP" so take the
-        // the first one
-        var forwardedIps = forwardedIpsStr.split(",")
-        ipAddress = forwardedIps[0]
-      }
-      if (!ipAddress) {
-        // Ensure getting client IP address still works in
-        // development environment
-        ipAddress = connection.remoteAddress
-      }
-      return ipAddress
-    };
     // User model
     const { User } = controller[Symbol.for("models")]
 
@@ -52,7 +34,7 @@ module.exports = async (controller, { body: { email, password }, header, connect
         // Generate jwt token and save to session, return info message and user
         return controller.infoMessage(res, {
           message: "Sign in successfully completed",
-          properties: { ...user.toAuthJson(await user.generateSession(getClientIp(), device)) },
+          properties: { ...user.toAuthJson(await user.generateSession(clientIp, device)) },
           status: 200
         })
       }
