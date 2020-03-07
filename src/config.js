@@ -19,6 +19,9 @@ module.exports = {
     [Symbol.for("port")]: process.env.PORT || 300
   },
   service: {
-    smsApiKey: process.env.SMS_API_KEY || ""
+    sms: {
+      apiKey: process.env.SMS_API_KEY,
+      baseUrl: process.env.SMS_BASE_URL
+    }
   }
 }
