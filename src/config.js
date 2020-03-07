@@ -17,5 +17,8 @@ module.exports = {
     [Symbol.for("privateKey")]: process.env.PRIVATE_KEY || "privateKey",
     [Symbol.for("publicKey")]: process.env.PUBLIC_KEY || "publicKey",
     [Symbol.for("port")]: process.env.PORT || 300
+  },
+  service: {
+    smsApiKey: process.env.SMS_API_KEY || ""
   }
 }
