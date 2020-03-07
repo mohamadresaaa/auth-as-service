@@ -26,6 +26,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.0",
     "auto-bind": "^4.0.0",
+    "axios": "^0.19.2",
     "bcrypt": "^3.0.8",
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
@@ -36,7 +37,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.3",
     "morgan": "^1.9.1",
-    "request": "^2.88.2",
     "uuid": "^3.4.0"
   },
   "devDependencies": {
