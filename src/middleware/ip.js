@@ -1,5 +1,5 @@
 module.exports = (req, res, next) => {
-  const ipAddress = null
+  let ipAddress = null
 
   // Amazon EC2 / Heroku workaround to get real client IP
   const forwardedIpsStr = req.header("x-forwarded-for")
@@ -9,15 +9,12 @@ module.exports = (req, res, next) => {
     // the format: "client IP, proxy 1 IP, proxy 2 IP" so take the
     // the first one
     const forwardedIps = forwardedIpsStr.split(",")
-
-    // eslint-disable-next-line no-const-assign
     ipAddress = forwardedIps[0]
   }
 
   if (!ipAddress) {
     // Ensure getting client IP address still works in
     // development environment
-    // eslint-disable-next-line no-const-assign
     ipAddress = req.connection.remoteAddress
   }
 
