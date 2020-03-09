@@ -4,6 +4,7 @@ const baseController = require("../baseController")
 module.exports = new class SmsController extends baseController {
   async accountInfo (req, res, next) {
     try {
+      await this[Symbol.for("services")].v1.sms.accountInfo(this, res)
     } catch (error) {
       next(error)
     }
