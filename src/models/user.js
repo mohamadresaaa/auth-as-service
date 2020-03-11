@@ -104,7 +104,7 @@ userSchema.methods.comparePassword = async function (password) {
  * @param {object} device
  * @return {string} token
  */
-userSchema.methods.generateSession = async function (ip, device) {
+userSchema.methods.generateSession = async function (ip, device, geolocation) {
   // Generate jwt token
   const token = sign({
     iss: "jraw",
@@ -115,6 +115,7 @@ userSchema.methods.generateSession = async function (ip, device) {
   await new Session({
     device,
     expiryDate: new Date(new Date().setDate(new Date().getDate() + 30)),
+    geolocation,
     ip,
     token,
     user: this.id

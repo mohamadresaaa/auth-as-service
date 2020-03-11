@@ -9,6 +9,10 @@ const sessionSchema = new Schema({
     required: true,
     type: Date
   },
+  geolocation: {
+    required: true,
+    type: Object
+  },
   ip: {
     required: true,
     type: String
