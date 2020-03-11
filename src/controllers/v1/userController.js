@@ -9,4 +9,12 @@ module.exports = new class UserController extends baseController {
       next(error)
     }
   }
+
+  async changePassword (req, res, next) {
+    try {
+
+    } catch (error) {
+      next(error)
+    }
+  }
 }
