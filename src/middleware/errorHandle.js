@@ -4,7 +4,7 @@ const { ErrorMessage, PublicErrorMessage } = require("../lib/messages")
 const apiErrorHandler = (error, req, res, next) => {
   if (req.file) fs.unlinkSync(req.file.path)
 
-  switch (process.env.MODE || "development") {
+  switch (config.server[Symbol.for("mode")]) {
     case "development":
       return res.status(error.status ? error.status : 500).json({
         message: error.message,

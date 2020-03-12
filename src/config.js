@@ -14,8 +14,9 @@ module.exports = {
   },
   server: {
     logMode: process.env.LOG_MODE || "dev",
-    [Symbol.for("privateKey")]: process.env.PRIVATE_KEY || "privateKey",
-    [Symbol.for("publicKey")]: process.env.PUBLIC_KEY || "publicKey",
+    [Symbol.for("mode")]: process.env.MODE || "development",
+    [Symbol.for("private key")]: process.env.PRIVATE_KEY || "privateKey",
+    [Symbol.for("public key")]: process.env.PUBLIC_KEY || "publicKey",
     [Symbol.for("port")]: process.env.PORT || 300
   },
   service: {
