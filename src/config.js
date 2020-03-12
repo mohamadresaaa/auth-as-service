@@ -20,8 +20,11 @@ module.exports = {
     [Symbol.for("port")]: process.env.PORT || 300
   },
   service: {
+    email: {
+      apiKey: process.env.EMAIL_API_KEY
+    },
     geolocation: {
-      apiKey: process.env.GEO_LOCATION_KEY,
+      apiKey: process.env.GEO_LOCATION_API_KEY,
       baseUrl: process.env.GEO_LOCATION_BASE_URL
     }
   }
