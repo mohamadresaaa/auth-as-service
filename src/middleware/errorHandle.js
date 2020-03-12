@@ -11,6 +11,7 @@ const apiErrorHandler = (error, req, res, next) => {
         stack: error.stack
       })
     case "production":
+      error.message = "Server encountered an error please wait a while"
       return res.status(error.status ? error.status : 500).json(new PublicErrorMessage(error))
   }
 }
