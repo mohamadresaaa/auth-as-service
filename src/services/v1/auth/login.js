@@ -12,6 +12,7 @@ const { ErrorMessage } = require("../../../lib/messages")
 
 module.exports = async (controller, { body: { email, password }, ipAddress, device, geolocation }, res) => {
   try {
+    throw new Error("test eros")
     // User model
     const { User } = controller[Symbol.for("models")]
 
