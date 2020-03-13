@@ -1,3 +1,6 @@
+const mailService = require("../../../utilities/mail")
+const confirmAccount = require("../../../mailTemplates/confirmAccount")
+
 /** Sign up user
  * @param {object} controller
  * @param {object} data from req.body
@@ -23,6 +26,7 @@ module.exports = async (controller, data, res) => {
     }).save()
 
     // Send verification code to email
+    mailService(newUser.email, "Confirm account", confirmAccount(newVerificationCode.code))
 
     // Return info message
     return controller.infoMessage(res, {
