@@ -26,7 +26,7 @@ module.exports = async (controller, data, res) => {
     }).save()
 
     // Send verification code to email
-    mailService(newUser.email, "Confirm account", confirmAccount(newVerificationCode.code))
+    await mailService(newUser.email, "Confirm account", confirmAccount(newVerificationCode.code))
 
     // Return info message
     return controller.infoMessage(res, {

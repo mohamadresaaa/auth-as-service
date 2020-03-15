@@ -1,3 +1,4 @@
+const config = require("../config")
 const sgMail = require("@sendgrid/mail")
 
 // Set api key
