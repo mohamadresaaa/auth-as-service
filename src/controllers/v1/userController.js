@@ -12,7 +12,7 @@ module.exports = new class UserController extends baseController {
 
   async changePassword (req, res, next) {
     try {
-
+      await this[Symbol.for("services")].v1.user.changePassword(this, req, res)
     } catch (error) {
       next(error)
     }

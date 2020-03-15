@@ -9,8 +9,8 @@ const { ErrorMessage } = require("../../../lib/messages")
  */
 module.exports = async (controller, { code, password }, res) => {
   try {
-    // VerificationCode model
-    const { VerificationCode } = controller[Symbol.for("models")]
+    // VerificationCode, Session model
+    const { VerificationCode, Session } = controller[Symbol.for("models")]
 
     // Find verification code
     const verifyCode = await VerificationCode.findOne({
@@ -25,7 +25,7 @@ module.exports = async (controller, { code, password }, res) => {
       await verifyCode.user.set({ password }).save()
 
       // Remove sessions of user
-      // await Session.deleteMany({ user: user.id })
+      await Session.deleteMany({ user: verifyCode.user.id })
 
       // Expire verification code
       await verifyCode.updateOne({ used: true })
