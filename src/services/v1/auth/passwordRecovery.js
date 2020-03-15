@@ -1,3 +1,6 @@
+const mailService = require("../../../utilities/mail")
+const passwordRecovery = require("../../../mailTemplates/passwordRecovery")
+
 /** Submit password recovery link
  * @param {object} controller
  * @param {string} email from req.body
@@ -22,6 +25,7 @@ module.exports = async (controller, { email }, res) => {
       }).save()
 
       // Send email
+      await mailService(user.email, "Reset password", passwordRecovery(newVerificationCode.code))
     }
 
     // Return info message
