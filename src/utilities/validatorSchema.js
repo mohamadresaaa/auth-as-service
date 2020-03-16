@@ -1,11 +1,24 @@
 const joi = require("@hapi/joi")
 
+const changePassword = joi.object().keys({
+  currentPassword: joi.string().required(),
+  newPassword: joi.string().min(8).required()
+})
+
+const deactivation = joi.object().keys({
+  password: joi.string().required()
+})
+
 const login = joi.object().keys({
   email: joi.string().required(),
   password: joi.string().required()
 })
 
 const passwordRecovery = joi.object().keys({
+  email: joi.string().required()
+})
+
+const reactivation = joi.object().keys({
   email: joi.string().required()
 })
 
@@ -21,14 +34,6 @@ const resetPassword = joi.object().keys({
   password: joi.string().min(8).required()
 })
 
-const deactivation = joi.object().keys({
-  password: joi.string().required()
-})
-
-const reactivation = joi.object().keys({
-  email: joi.string().required()
-})
-
 module.exports = {
-  deactivation, login, passwordRecovery, reactivation, register, resetPassword
+  changePassword, deactivation, login, passwordRecovery, reactivation, register, resetPassword
 }
