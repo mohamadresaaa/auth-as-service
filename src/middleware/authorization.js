@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     if (token) {
       // Verify token
       const payload = jwt.verify(token,
-        config.server[Symbol.for("privateKey")] + config.server[Symbol.for("publicKey")],
+        config.server[Symbol.for("private key")] + config.server[Symbol.for("public key")],
         { issuer: "jraw" })
 
       // Find session in mongodb with jwt token and user.id and populate user collection
