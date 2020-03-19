@@ -8,14 +8,14 @@ const findDirectories = fs.readdirSync(path.resolve(__dirname)).filter((item) =>
 
 // Convert directories to object
 for (const directory of findDirectories) {
-  services[directory] = {}
+	services[directory] = {}
 }
 
 // Read files of directory
 Object.keys(services).map(key => {
-  for (const file of fs.readdirSync(path.resolve(__dirname, key))) {
-    services[key][file.replace(".js", "")] = require(path.resolve(__dirname, key, file))
-  }
+	for (const file of fs.readdirSync(path.resolve(__dirname, key))) {
+		services[key][file.replace(".js", "")] = require(path.resolve(__dirname, key, file))
+	}
 })
 
 module.exports = services

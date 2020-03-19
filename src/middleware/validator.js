@@ -7,21 +7,21 @@ const { ErrorMessage } = require("../lib/messages")
  * @return values & error
  */
 module.exports = schema => (req, res, next) => {
-  const { error, value } = schema.validate(req.body)
+	const { error, value } = schema.validate(req.body)
 
-  if (error) {
-    if (req.file) {
-      fs.unlinkSync(req.file.path)
-    }
+	if (error) {
+		if (req.file) {
+			fs.unlinkSync(req.file.path)
+		}
 
-    // eslint-disable-next-line no-useless-escape
-    return res.status(422).json(new ErrorMessage("Invalid Data", error.details[0].message.replace(/(\")+/g, ""), 422))
-  }
+		// eslint-disable-next-line no-useless-escape
+		return res.status(422).json(new ErrorMessage("Invalid Data", error.details[0].message.replace(/(\")+/g, ""), 422))
+	}
 
-  if (!req.value) {
-    req.value = {}
-  }
+	if (!req.value) {
+		req.value = {}
+	}
 
-  req.value.body = value
-  next()
+	req.value.body = value
+	next()
 }

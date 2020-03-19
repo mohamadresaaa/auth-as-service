@@ -20,66 +20,66 @@ const setupMongodb = Symbol("Mongodb installation and configuration")
 const setupRoutes = Symbol("Setup api routes")
 
 module.exports = class App {
-  constructor () {
-    this[provider] = express()
-  }
+	constructor () {
+		this[provider] = express()
+	}
 
-  /** Run all methods
+	/** Run all methods
    * @public
    */
-  initialize () {
-    this[setupExpress]()
-    this[setupMongodb]()
-    this[configuration]()
-    this[setupRoutes]()
-  }
+	initialize () {
+		this[setupExpress]()
+		this[setupMongodb]()
+		this[configuration]()
+		this[setupRoutes]()
+	}
 
-  /** Setup server with express
+	/** Setup server with express
    * @private
    * @package http, express
    */
-  [setupExpress] () {
-    const server = createServer(this[provider])
-    const port = config.server[Symbol.for("port")]
-    server.listen(port, logger(`Server running on port ${port}`))
-  }
+	[setupExpress] () {
+		const server = createServer(this[provider])
+		const port = config.server[Symbol.for("port")]
+		server.listen(port, logger(`Server running on port ${port}`))
+	}
 
-  /** Setup mongodb and set config
+	/** Setup mongodb and set config
    * @private
    * @package mongoose
    */
-  [setupMongodb] () {
-    mongoose.Promise = global.Promise
-    mongoose.connect(config.database.mongodb[Symbol.for("mongodb url")], {
-      ...config.database.mongodb[Symbol.for("mongodb options")]
-    }, (err) => (err ? logger(err.message, "red") : logger("Database connected")))
-  }
+	[setupMongodb] () {
+		mongoose.Promise = global.Promise
+		mongoose.connect(config.database.mongodb[Symbol.for("mongodb url")], {
+			...config.database.mongodb[Symbol.for("mongodb options")]
+		}, (err) => (err ? logger(err.message, "red") : logger("Database connected")))
+	}
 
-  /** Setup and using packages
+	/** Setup and using packages
    * @private
    * @package helmet, body-parser, morgan
    */
-  [configuration] () {
-    this[provider].use(helmet())
-    this[provider].use(cors({
-      credentials: true,
-      methods: "GET, POST, PUT, DELETE",
-      origin: "*"
-    }))
-    this[provider].use(bodyParser.json())
-    this[provider].use(bodyParser.urlencoded({ extended: true }))
-    this[provider].use(contentType)
-    this[provider].use(device)
-    this[provider].use(ipAddress)
-    this[provider].use(morgan(config.server.logMode))
-  }
+	[configuration] () {
+		this[provider].use(helmet())
+		this[provider].use(cors({
+			credentials: true,
+			methods: "GET, POST, PUT, DELETE",
+			origin: "*"
+		}))
+		this[provider].use(bodyParser.json())
+		this[provider].use(bodyParser.urlencoded({ extended: true }))
+		this[provider].use(contentType)
+		this[provider].use(device)
+		this[provider].use(ipAddress)
+		this[provider].use(morgan(config.server.logMode))
+	}
 
-  /** Import api routes and errors management
+	/** Import api routes and errors management
    * @private
    */
-  [setupRoutes] () {
-    this[provider].use("/api", routes)
-    this[provider].use("*", apiError404)
-    this[provider].use(apiErrorHandler)
-  }
+	[setupRoutes] () {
+		this[provider].use("/api", routes)
+		this[provider].use("*", apiError404)
+		this[provider].use(apiErrorHandler)
+	}
 }

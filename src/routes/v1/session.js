@@ -7,7 +7,7 @@ const { v1 } = require("../../controllers")
 
 // List of sessions user
 router.get("/",
-  v1.session.list)
+	v1.session.list)
 
 router.delete("/:id", v1.session.remove)
 

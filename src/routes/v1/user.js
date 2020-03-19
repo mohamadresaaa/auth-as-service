@@ -14,16 +14,16 @@ const { changePassword } = require("../../utilities/validatorSchema")
 
 // Show user information
 router.get("/",
-  v1.user.profile)
+	v1.user.profile)
 
 // Update password of user and remove other sessions
 router.post("/changePassword",
-  validator(changePassword),
-  v1.user.changePassword)
+	validator(changePassword),
+	v1.user.changePassword)
 
 // Sessions management
 router.use("/sessions",
-  sessionRoutes)
+	sessionRoutes)
 
 // Exports router
 module.exports = router

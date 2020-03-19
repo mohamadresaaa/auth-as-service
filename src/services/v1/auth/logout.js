@@ -5,16 +5,16 @@
  * @returns {response} message
  */
 module.exports = async (controller, session, res) => {
-  try {
-    // Remove session
-    await session.remove()
+	try {
+		// Remove session
+		await session.remove()
 
-    // Return info message
-    return controller.infoMessage(res, {
-      message: "Exit succeeded",
-      status: 200
-    })
-  } catch (error) {
-    throw error
-  }
+		// Return info message
+		return controller.infoMessage(res, {
+			message: "Exit succeeded",
+			status: 200
+		})
+	} catch (error) {
+		throw error
+	}
 }

@@ -8,7 +8,7 @@ const versions = fs.readdirSync(path.resolve(__dirname)).filter((item) => !item.
 
 // read version directory
 for (const version of versions) {
-  controllers[version] = require(`${path.resolve(__dirname, version)}`)
+	controllers[version] = require(`${path.resolve(__dirname, version)}`)
 }
 
 module.exports = controllers

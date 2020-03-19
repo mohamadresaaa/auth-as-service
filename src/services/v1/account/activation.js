@@ -7,38 +7,38 @@ const { ErrorMessage } = require("../../../lib/messages")
  * @returns {response} message and user
  */
 module.exports = async (controller, code, res) => {
-  try {
-    // VerificationCode model
-    const { VerificationCode } = controller[Symbol.for("models")]
+	try {
+		// VerificationCode model
+		const { VerificationCode } = controller[Symbol.for("models")]
 
-    // Find verification code
-    const verifyCode = await VerificationCode.findOne({
-      code,
-      expiryDate: { $gt: new Date() },
-      for: "Account activation",
-      used: false
-    }).populate("user")
+		// Find verification code
+		const verifyCode = await VerificationCode.findOne({
+			code,
+			expiryDate: { $gt: new Date() },
+			for: "Account activation",
+			used: false
+		}).populate("user")
 
-    // If find verification code, handle it
-    if (verifyCode) {
-      // Change status to active
-      await verifyCode.user.set({ status: "active" }).save()
+		// If find verification code, handle it
+		if (verifyCode) {
+			// Change status to active
+			await verifyCode.user.set({ status: "active" }).save()
 
-      // Expire verification code
-      await verifyCode.updateOne({ used: true })
+			// Expire verification code
+			await verifyCode.updateOne({ used: true })
 
-      // Return info message
-      return controller.infoMessage(res, {
-        message: "Your account has been successfully activated",
-        status: 200
-      })
-    }
+			// Return info message
+			return controller.infoMessage(res, {
+				message: "Your account has been successfully activated",
+				status: 200
+			})
+		}
 
-    // Otherwise, return error
-    throw new ErrorMessage("Invalid verification code",
-      "Verification code is incorrect",
-      422)
-  } catch (error) {
-    throw error
-  }
+		// Otherwise, return error
+		throw new ErrorMessage("Invalid verification code",
+			"Verification code is incorrect",
+			422)
+	} catch (error) {
+		throw error
+	}
 }

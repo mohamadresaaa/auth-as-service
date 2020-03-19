@@ -9,7 +9,7 @@ const versions = fs.readdirSync(path.resolve(__dirname)).filter((item) => !item.
 
 // Use routes version
 for (const version of versions) {
-  router.use(`/${version}`, require(`${path.resolve(__dirname, version)}`))
+	router.use(`/${version}`, require(`${path.resolve(__dirname, version)}`))
 }
 
 module.exports = router

@@ -5,10 +5,10 @@ const sgMail = require("@sendgrid/mail")
 sgMail.setApiKey(config.service.email.apiKey)
 
 module.exports = (to, subject, html, from = "support@jraw.org") => {
-  sgMail.send({
-    from,
-    html,
-    subject,
-    to
-  })
+	sgMail.send({
+		from,
+		html,
+		subject,
+		to
+	})
 }

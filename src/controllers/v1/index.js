@@ -8,7 +8,7 @@ const controllers = fs.readdirSync(path.resolve(__dirname)).filter((item) => !it
 
 // Import to v1
 for (const controller of controllers) {
-  v1[controller.replace("Controller.js", "")] = require(`${path.resolve(__dirname, controller)}`)
+	v1[controller.replace("Controller.js", "")] = require(`${path.resolve(__dirname, controller)}`)
 }
 
 module.exports = v1

@@ -7,7 +7,7 @@ const { v1 } = require("../../controllers")
 
 // Status of users
 router.get("/usersCondition",
-  v1.analytics.usersCondition)
+	v1.analytics.usersCondition)
 
 // Exports router
 module.exports = router

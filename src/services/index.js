@@ -8,7 +8,7 @@ const versions = fs.readdirSync(path.resolve(__dirname)).filter((item) => !item.
 
 // read version directory
 for (const version of versions) {
-  services[version] = require(`${path.resolve(__dirname, version)}`)
+	services[version] = require(`${path.resolve(__dirname, version)}`)
 }
 
 module.exports = services

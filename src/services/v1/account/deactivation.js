@@ -7,28 +7,28 @@ const { ErrorMessage } = require("../../../lib/messages")
  * @returns {response} message and user
  */
 module.exports = async (controller, { body: { password }, session: { user } }, res) => {
-  try {
-    // Session model
-    const { Session } = controller[Symbol.for("models")]
+	try {
+		// Session model
+		const { Session } = controller[Symbol.for("models")]
 
-    // Compare password, If password is the same
-    if (user.comparePassword(password)) {
-      // Change status to inactive
-      await user.set({ status: "inactive" }).save()
+		// Compare password, If password is the same
+		if (user.comparePassword(password)) {
+			// Change status to inactive
+			await user.set({ status: "inactive" }).save()
 
-      // Remove sessions of user
-      await Session.deleteMany({ user: user.id })
+			// Remove sessions of user
+			await Session.deleteMany({ user: user.id })
 
-      // Return info message
-      return controller.infoMessage(res, {
-        message: "Your account has been successfully deactivated",
-        status: 200
-      })
-    }
+			// Return info message
+			return controller.infoMessage(res, {
+				message: "Your account has been successfully deactivated",
+				status: 200
+			})
+		}
 
-    // Otherwise, return error
-    throw new ErrorMessage("Invalid Data", "Your password was incorrect", 422)
-  } catch (error) {
-    throw error
-  }
+		// Otherwise, return error
+		throw new ErrorMessage("Invalid Data", "Your password was incorrect", 422)
+	} catch (error) {
+		throw error
+	}
 }
