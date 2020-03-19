@@ -1,5 +1,5 @@
 {
-  "name": "jraw-server",
+  "name": "auth-as-servic",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,18 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mohamadresaaa/jraw-server.git"
+    "url": "git+https://github.com/mohamadresaaa/auth-as-service.git"
   },
   "keywords": [
     "jraw",
-    "server"
+    "auth",
+    "service"
   ],
   "author": "Mohamadreza Mosalli",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mohamadresaaa/jraw-server/issues"
+    "url": "https://github.com/mohamadresaaa/auth-as-service/issues"
   },
-  "homepage": "https://github.com/mohamadresaaa/jraw-server#readme",
+  "homepage": "https://github.com/mohamadresaaa/auth-as-service#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.0",
     "@sendgrid/mail": "^6.5.4",
