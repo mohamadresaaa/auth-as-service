@@ -18,6 +18,14 @@ module.exports = new class AuthController extends baseController {
 		}
 	}
 
+	async twoFactorAuth (req, res, next) {
+		try {
+			await this[Symbol.for("services")].v1.auth.twoFactorAuth(this, req, res)
+		} catch (error) {
+			next(error)
+		}
+	}
+
 	async logout (req, res, next) {
 		try {
 			await this[Symbol.for("services")].v1.auth.logout(this, req.session, res)
