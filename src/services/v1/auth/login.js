@@ -31,6 +31,15 @@ module.exports = async (controller, { body: { email, password }, ipAddress, devi
 
 			// If password is the same
 			if (await user.comparePassword(password)) {
+				// If enabled two factor auth
+				if(user.isTwoFactorAuth) {
+					// Generate verification code 
+
+					// Send verification code to email of user
+					
+					// Return info message
+				}
+
 				// Generate jwt token and save to session, return info message and user
 				return controller.infoMessage(res, {
 					message: "Sign in successfully completed",
