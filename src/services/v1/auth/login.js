@@ -6,6 +6,7 @@ const { ErrorMessage } = require("../../../lib/messages")
  * @param {string} password from req.body
  * @param {string} ipAddress from req.ipAddress
  * @param {string} device from req.device
+ * @param {string} geolocation from req.geolocation
  * @param {object} res from express
  * @returns {response} message and user
  */
