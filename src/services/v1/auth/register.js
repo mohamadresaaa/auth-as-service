@@ -1,4 +1,4 @@
-const mailService = require("../../../utilities/mail")
+const mailService = require("../../../lib/mail")
 const confirmAccount = require("../../../mailTemplates/confirmAccount")
 
 /** Sign up user

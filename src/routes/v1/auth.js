@@ -10,7 +10,7 @@ const validator = require("../../middleware/validator")
 // Validation schemas
 const {
 	login, passwordRecovery, register, resetPassword
-} = require("../../utilities/validatorSchema")
+} = require("../../middleware/validatorSchema")
 
 /** @define routes */
 

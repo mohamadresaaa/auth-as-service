@@ -8,7 +8,7 @@ const { v1 } = require("../../controllers")
 const validator = require("../../middleware/validator")
 
 // Validation schemas
-const { changePassword } = require("../../utilities/validatorSchema")
+const { changePassword } = require("../../middleware/validatorSchema")
 
 /** @define routes */
 

@@ -1,4 +1,4 @@
-const mailService = require("../../../utilities/mail")
+const mailService = require("../../../lib/mail")
 const passwordRecovery = require("../../../mailTemplates/passwordRecovery")
 
 /** Submit password recovery link
