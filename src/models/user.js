@@ -28,6 +28,10 @@ const userSchema = new Schema({
 		default: null,
 		type: String
 	},
+	isTwoFactorAuth: {
+		default: false,
+		type: Boolean
+	},
 	job: {
 		default: null,
 		type: String
