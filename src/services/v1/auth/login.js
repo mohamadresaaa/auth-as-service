@@ -12,8 +12,8 @@ const { ErrorMessage } = require("../../../lib/messages")
 
 module.exports = async (controller, { body: { email, password }, ipAddress, device, geolocation }, res) => {
 	try {
-		// User model
-		const { User } = controller[Symbol.for("models")]
+		// User, VerificationCode model
+		const { User, VerificationCode } = controller[Symbol.for("models")]
 
 		// Find user
 		const user = await User.findOne({ $or: [{ email }, { username: email }] })
@@ -33,14 +33,24 @@ module.exports = async (controller, { body: { email, password }, ipAddress, devi
 			if (await user.comparePassword(password)) {
 				// If enabled two factor auth
 				if(user.isTwoFactorAuth) {
-					// Generate verification code 
-
+					// Generate verification code
+					const newVerificationCode = await new VerificationCode({
+						code: (parseInt(Math.random() * 1000000000000000)).toString().substr(0, 6),
+						expiryDate: new Date(new Date().setMinutes(new Date().getMinutes() + 2)),
+						for: "Two factor auth",
+						user: user.id
+					}).save()
+					
 					// Send verification code to email of user
 					
 					// Return info message
+					return controller.infoMessage(res, {
+						message: "The verification code has been sent to your email",
+						status: 301
+					})
 				}
 
-				// Generate jwt token and save to session, return info message and user
+				// Otherwise, generate jwt token and save to session, return info message and user
 				return controller.infoMessage(res, {
 					message: "Sign in successfully completed",
 					properties: { ...user.toAuthJson(await user.generateSession(ipAddress, device, geolocation)) },
